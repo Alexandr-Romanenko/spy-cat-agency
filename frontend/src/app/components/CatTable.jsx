@@ -33,7 +33,7 @@ export default function CatTable({ cats, onRefresh }) {
         {cats.map((cat) => (
           <tr key={cat.id} className="text-center border-t">
             <td>{cat.name}</td>
-            <td>{cat.years_of_experience}</td>
+            <td>{cat.experience}</td>
             <td>{cat.breed}</td>
             <td>
               {editingId === cat.id ? (
