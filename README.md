@@ -92,5 +92,5 @@ npm run dev
 ## 📫 Postman Collection
 
 All API endpoints are documented and available in this Postman collection:
-👉 [Postman Collection Link](./backend/Spy Cat API.postman_collection.json)
+👉 [Postman Collection Link](./backend/spy-cat-api.postman_collection.json)
 
