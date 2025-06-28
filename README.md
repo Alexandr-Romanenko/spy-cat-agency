@@ -92,5 +92,5 @@ npm run dev
 ## 📫 Postman Collection
 
 All API endpoints are documented and available in this Postman collection:
-👉 [Postman Collection Link](https://.postman.co/workspace/My-Workspace~1000c327-0c8b-4eb7-8cd5-e546a80b2a03/collection/36472400-564a3b50-1613-466b-8f1e-5f5d6b689dc5?action=share&creator=36472400)
+👉 [Postman Collection Link](./spy-cat-api.postman_collection.json)
 
