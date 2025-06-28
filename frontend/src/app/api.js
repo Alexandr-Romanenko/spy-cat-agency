@@ -12,13 +12,24 @@ export async function createCat(data) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
+
   if (!res.ok) {
     const errorData = await res.json().catch(() => ({}));
     console.error("Server response error:", errorData);
-    throw new Error(
-      errorData?.detail || JSON.stringify(errorData) || "Failed to create cat"
-    );
+
+    let message = "Failed to create cat";
+    if (typeof errorData === "object" && errorData !== null) {
+      message = Object.entries(errorData)
+        .map(
+          ([key, val]) => `${key}: ${Array.isArray(val) ? val.join(", ") : val}`
+        )
+        .join("\n");
+    } else if (errorData.detail) {
+      message = errorData.detail;
+    }
+    throw new Error(message);
   }
+
   return res.json();
 }
 
