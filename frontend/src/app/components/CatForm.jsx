@@ -20,23 +20,37 @@ export default function CatForm({ onSuccess }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+
+    if (
+      !form.name.trim() ||
+      !form.breed.trim() ||
+      !form.experience.trim() ||
+      !form.salary.trim()
+    ) {
+      setError("Please fill all fields");
+      return;
+    }
+
+    const experience = parseInt(form.experience);
+    const salary = parseFloat(form.salary);
+
+    if (isNaN(experience) || isNaN(salary)) {
+      setError("Experience and salary must be valid numbers");
+      return;
+    }
+
     try {
       await createCat({
-        name: form.name,
-        breed: form.breed,
-        experience: parseInt(form.experience),
-        salary: parseFloat(form.salary),
+        name: form.name.trim(),
+        breed: form.breed.trim(),
+        experience,
+        salary,
       });
-      setForm({
-        name: "",
-        experience: "",
-        breed: "",
-        salary: "",
-      });
+      setForm({ name: "", experience: "", breed: "", salary: "" });
       if (onSuccess) onSuccess();
     } catch (err) {
       console.error(err);
-      setError("Error when creating a cat");
+      setError("Error when creating a cat: " + err.message);
     }
   };
 
@@ -79,7 +93,9 @@ export default function CatForm({ onSuccess }) {
         className="w-full border p-2 rounded"
       />
 
-      {error && <div className="text-red-500">{error}</div>}
+      {error && (
+        <div className="text-red-600 whitespace-pre-line mb-2">{error}</div>
+      )}
 
       <button
         type="submit"
