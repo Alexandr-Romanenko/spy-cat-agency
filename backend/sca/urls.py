@@ -13,7 +13,7 @@ urlpatterns = [
     # Cat endpoints
     path("cats/", CatListView.as_view(), name="cat-list"),
     path("cat/create/", CatCreateView.as_view(), name="cat-create"),
-    path("cat/<int:pk>/", CatRetrieveView.as_view(), name="cat-detail"),
+    path("cat/<int:pk>/detail/", CatRetrieveView.as_view(), name="cat-detail"),
     path("cat/<int:pk>/update/", CatUpdateView.as_view(), name="cat-update"),
     path("cat/<int:pk>/delete/", CatDeleteView.as_view(), name="cat-delete"),
 
